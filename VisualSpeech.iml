@@ -48,5 +48,6 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-engine:1.7.0" level="project" />
     <orderEntry type="library" name="jquery" level="application" />
     <orderEntry type="library" name="Python 3.9 (VisualSpeech) interpreter library" level="application" />
+    <orderEntry type="library" name="org.apache.catalina.filters.CorsFilter-7.0.42" level="project" />
   </component>
 </module>
