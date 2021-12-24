@@ -41,6 +41,7 @@ let download_link = document.querySelector("#download-video");
 let camera_stream = null;
 let media_recorder = null;
 let blobs_recorded = [];
+let video_local = null;
 
 camera_button.addEventListener('click', async function() {
     try {
@@ -71,16 +72,12 @@ start_button.addEventListener('click', function() {
     });
 
     media_recorder.addEventListener('stop', function() {
-        let recording = new File(blobs_recorded, 'recording.mp4', { type: 'video/mp4' });
+        video_local = URL.createObjectURL(new Blob(blobs_recorded, { type: 'video/mp4' }));
 
-        download_link.href = recording;
+        download_link.href = video_local;
 
         stop_button.style.display = 'none';
         download_link.style.display = 'block';
-
-        //let data = new FormData();
-        //data.append('file', recording);
-
 
     });
 
@@ -94,3 +91,22 @@ stop_button.addEventListener('click', function() {
     media_recorder.stop();
 });
 
+
+function sendVideo(){
+    let data = new FormData().append('video', video_local);
+
+    $.ajax({
+
+        url: 'http://192.168.1.51:80/main1',
+        data: data,
+        type: 'GET',
+        crossDomain: true,
+        dataType: 'jsonp',
+        success: function(data) {
+            alert("Success");
+            console.log(data)},
+
+        error: function() { alert('Failed!'); },
+        //beforeSend: setHeader
+    });
+}
