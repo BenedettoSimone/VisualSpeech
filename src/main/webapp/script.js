@@ -103,9 +103,6 @@ async function sendVideo() {
     });
 
     var responseJson = response.json()
-
-    var txt = JSON.stringify(responseJson.result)
-
     responseJson.then(function(data){
         console.log(data.message)
     });

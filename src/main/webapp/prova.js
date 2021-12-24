@@ -33,7 +33,7 @@ fetch('http://192.168.1.51:80/main?str='+str, {
 
 $.ajax({
 
-    url: 'http://192.168.1.51:80/main',
+    url: 'http://192.168.1.51:80/path',
     //data: null,
     type: 'GET',
     //crossDomain: true,
