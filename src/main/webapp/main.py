@@ -18,7 +18,7 @@ def index1():
 @app.route('/main1', methods=['GET', 'POST'])
 def index11():
     req = request.get_data()
-    FILE_OUTPUT = 'output.mp4'
+    FILE_OUTPUT = 'MyFile.mp4'
 
     # Checks and deletes the output file
     # You cant have a existing file or it will through an error

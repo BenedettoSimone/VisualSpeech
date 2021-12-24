@@ -72,8 +72,11 @@ start_button.addEventListener('click', function() {
     });
 
     media_recorder.addEventListener('stop', function() {
+        //var prova=new Blob(blobs_recorded, { type: 'video/mp4' })
         //video_local = URL.createObjectURL(new Blob(blobs_recorded, { type: 'video/mp4' }));
         video_local = new File(blobs_recorded, 'recording.mp4', { type: 'video/mp4' });
+
+        //video_local = new File(prova);
         download_link.href = video_local;
 
         stop_button.style.display = 'none';
@@ -91,13 +94,12 @@ stop_button.addEventListener('click', function() {
     media_recorder.stop();
 });
 
-
 async function sendVideo() {
     let data = new FormData();
     data.append('file', video_local);
 
 
-    const response = await fetch('http://192.168.1.51:80/main1', {
+    const response = await fetch('http://192.168.178.27:80/main1', {
         method: "POST",
         body: data
     });
