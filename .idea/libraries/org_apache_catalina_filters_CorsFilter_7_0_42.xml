@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="org.apache.catalina.filters.CorsFilter-7.0.42">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/org.apache.catalina.filters.CorsFilter-7.0.42.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

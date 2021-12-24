@@ -72,8 +72,8 @@ start_button.addEventListener('click', function() {
     });
 
     media_recorder.addEventListener('stop', function() {
-        video_local = URL.createObjectURL(new Blob(blobs_recorded, { type: 'video/mp4' }));
-
+        //video_local = URL.createObjectURL(new Blob(blobs_recorded, { type: 'video/mp4' }));
+        video_local = new File(blobs_recorded, 'recording.mp4', { type: 'video/mp4' });
         download_link.href = video_local;
 
         stop_button.style.display = 'none';
@@ -92,21 +92,43 @@ stop_button.addEventListener('click', function() {
 });
 
 
-function sendVideo(){
-    let data = new FormData().append('video', video_local);
+async function sendVideo() {
+    let data = new FormData();
+    data.append('file', video_local);
 
+
+    const response = await fetch('http://192.168.1.51:80/main1', {
+        method: "POST",
+        body: data
+    });
+
+    var responseJson = response.json()
+
+    var txt = JSON.stringify(responseJson.result)
+
+    responseJson.then(function(data){
+        console.log(data.message)
+    });
+
+    /*
     $.ajax({
 
         url: 'http://192.168.1.51:80/main1',
         data: data,
         type: 'GET',
         crossDomain: true,
-        dataType: 'jsonp',
-        success: function(data) {
+        //dataType: 'jsonp',
+        success: function (data) {
             alert("Success");
-            console.log(data)},
+            console.log(data)
+        },
 
-        error: function() { alert('Failed!'); },
+        error: function () {
+            alert('Failed!');
+        },
         //beforeSend: setHeader
     });
+
+
+     */
 }
