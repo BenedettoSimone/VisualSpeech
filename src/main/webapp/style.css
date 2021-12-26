@@ -20,6 +20,12 @@ button {
     border-radius: 10px;
 }
 
+button:hover{
+    background-color: rebeccapurple;
+    color:white;
+    transition: 0.5s;
+}
+
 #start-camera {
     margin-top: 50px;
 }
@@ -144,4 +150,19 @@ button {
     100% {
         transform: scale(0.8);
     }
+}
+
+
+/*----RESULT SECTION------*/
+
+#result {
+    margin: 40px auto 0 auto;
+    width: 500px;
+    background: white;
+    height: 72px;
+    border-radius: 20px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    display: none;
 }
