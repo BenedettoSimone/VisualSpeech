@@ -37,11 +37,13 @@ let video = document.querySelector("#video");
 let start_button = document.querySelector("#start-record");
 let stop_button = document.querySelector("#stop-record");
 let download_link = document.querySelector("#download-video");
+let div_recording =document.querySelector("#recording")
 
 let camera_stream = null;
 let media_recorder = null;
 let blobs_recorded = [];
 let video_local = null;
+
 
 camera_button.addEventListener('click', async function() {
     try {
@@ -77,9 +79,10 @@ start_button.addEventListener('click', function() {
         video_local = new Blob(blobs_recorded,{ type: 'video/webm' });
 
         //video_local = new File(prova);
-        download_link.href = URL.createObjectURL(new Blob(blobs_recorded, { type: 'video/webm' }));
+        //download_link.href = URL.createObjectURL(new Blob(blobs_recorded, { type: 'video/webm' }));
 
         stop_button.style.display = 'none';
+        div_recording.style.display = 'none';
         download_link.style.display = 'block';
 
     });
@@ -88,6 +91,7 @@ start_button.addEventListener('click', function() {
 
     start_button.style.display = 'none';
     stop_button.style.display = 'block';
+    div_recording.style.display= 'block';
 });
 
 stop_button.addEventListener('click', function() {
