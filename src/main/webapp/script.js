@@ -37,7 +37,11 @@ let video = document.querySelector("#video");
 let start_button = document.querySelector("#start-record");
 let stop_button = document.querySelector("#stop-record");
 let download_link = document.querySelector("#download-video");
+let delete_button = document.querySelector("#delete-video");
 let div_recording =document.querySelector("#recording")
+let div_result = document.querySelector("#result")
+let string_result = document.querySelector("#string-result")
+
 
 let camera_stream = null;
 let media_recorder = null;
@@ -84,6 +88,7 @@ start_button.addEventListener('click', function() {
         stop_button.style.display = 'none';
         div_recording.style.display = 'none';
         download_link.style.display = 'block';
+        delete_button.style.display = 'block';
 
     });
 
@@ -98,9 +103,15 @@ stop_button.addEventListener('click', function() {
     media_recorder.stop();
 });
 
-async function sendVideo() {
+
+
+download_link.addEventListener('click', async function () {
     let data = new FormData();
     data.append('file', video_local);
+
+    download_link.style.display = 'none'
+    delete_button.style.display = 'none';
+    div_result.style.display = 'flex';
 
 
     const response = await fetch('http://192.168.1.31:80/main1', {
@@ -109,11 +120,19 @@ async function sendVideo() {
     });
 
     var responseJson = response.json()
-    responseJson.then(function(data){
+    responseJson.then(function (data) {
         console.log(data.message)
+        string_result.innerHTML = data.message;
     });
 
-    /*
+});
+
+
+
+/*
+async function sendVideo() {
+
+
     $.ajax({
 
         url: 'http://192.168.1.51:80/main1',
@@ -132,6 +151,5 @@ async function sendVideo() {
         //beforeSend: setHeader
     });
 
-
-     */
 }
+     */

@@ -36,7 +36,7 @@ button:hover{
     margin: 40px auto 0 auto;
 }
 
-#start-record, #stop-record, #download-video {
+#start-record, #stop-record, #download-video, #delete-video {
     display: none;
 }
 
@@ -162,7 +162,6 @@ button:hover{
     height: 72px;
     border-radius: 20px;
     padding: 10px;
-    display: flex;
-    align-items: center;
     display: none;
+    align-items: center;
 }
