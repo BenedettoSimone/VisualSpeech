@@ -1,11 +1,11 @@
 @font-face {
     font-family: "HelveticaNeueCustom";
-    src: url("HelveticaNeue.ttf");
+    src: url("font/HelveticaNeue.ttf");
 }
 
 @font-face {
     font-family: "HelveticaNeueBold";
-    src: url("HelveticaNeue-Bold.ttf");
+    src: url("font/HelveticaNeue-Bold.ttf");
 }
 
 html{

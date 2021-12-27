@@ -138,28 +138,3 @@ delete_button.addEventListener('click', function (){
     start_button.style.display = 'block'
 })
 
-
-/*
-async function sendVideo() {
-
-
-    $.ajax({
-
-        url: 'http://192.168.1.51:80/main1',
-        data: data,
-        type: 'GET',
-        crossDomain: true,
-        //dataType: 'jsonp',
-        success: function (data) {
-            alert("Success");
-            console.log(data)
-        },
-
-        error: function () {
-            alert('Failed!');
-        },
-        //beforeSend: setHeader
-    });
-
-}
-     */
