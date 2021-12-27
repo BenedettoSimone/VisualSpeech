@@ -129,6 +129,16 @@ download_link.addEventListener('click', async function () {
 
 
 
+delete_button.addEventListener('click', function (){
+    blobs_recorded = [];
+    video_local = null;
+
+    delete_button.style.display = 'none'
+    download_link.style.display = 'none'
+    start_button.style.display = 'block'
+})
+
+
 /*
 async function sendVideo() {
 
