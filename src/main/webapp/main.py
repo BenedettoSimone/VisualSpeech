@@ -1,6 +1,5 @@
 import os
-
-import cv2
+from Lip_Extractor import lip_extractor
 from flask import Flask, jsonify, request, make_response
 
 app = Flask(__name__)
@@ -22,11 +21,9 @@ def index1():
 def index11():
     req = request.get_data()
 
-    print(req)
-    FILE_OUTPUT = 'My-File.mp4'
+    FILE_OUTPUT = 'video.mp4'
 
     # Checks and deletes the output file
-    # You cant have a existing file or it will through an error
     if os.path.isfile(FILE_OUTPUT):
         os.remove(FILE_OUTPUT)
 
@@ -34,20 +31,10 @@ def index11():
     out_file.write(req)
     out_file.close()
 
-    vidcap = cv2.VideoCapture('My-File.mp4')
-    success, image = vidcap.read()
-    count = 0
+    # extract lips from video frame
+    lip_extractor(FILE_OUTPUT)
 
-    # create new directory for frame
-    dirname = 'frame'
-    os.mkdir(dirname)
-
-    while success:
-        cv2.imwrite(os.path.join(dirname, "frame-%d.jpg" % count), image)  # save frame as JPEG file
-        success, image = vidcap.read()
-        print('Read a new frame: ', success)
-        count += 1
-
+    # set response
     res = make_response(jsonify({"message": "Video Received"}), 200)
     res.headers['Access-Control-Allow-Origin'] = '*'
     res.headers['Access-Control-Allow-Methods'] = 'GET,PUT,POST,DELETE'
