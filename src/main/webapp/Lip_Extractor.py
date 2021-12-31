@@ -35,7 +35,7 @@ def lip_extractor(video_path):
                     max_value = max(h, w)
                     y = y - max_value // 3
                     roi = image[y:y + max_value, x:x + max_value]
-                    roi = imutils.resize(roi, width=250, inter=cv2.INTER_CUBIC)
+                    roi = cv2.resize(roi, (250, 250))
 
         cv2.imwrite(os.path.join(dirname, "frame-%d.jpg" % count), roi)  # save frame as JPEG file
         success, image = vidcap.read()

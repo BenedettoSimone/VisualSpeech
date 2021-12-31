@@ -1,6 +1,7 @@
 import os
 from Lip_Extractor import lip_extractor
 from Plot_image import plot_image
+from RemoveImage import remove_image
 from flask import Flask, jsonify, request, make_response
 
 app = Flask(__name__)
@@ -35,8 +36,11 @@ def index11():
     # extract lips from video frame
     lip_extractor(FILE_OUTPUT)
 
+    # remove similar images
+    remove_image()
+
     # plot image
-    plot_image()
+    #plot_image()
 
     # set response
     res = make_response(jsonify({"message": "Video Received"}), 200)
