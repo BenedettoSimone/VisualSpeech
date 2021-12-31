@@ -40,7 +40,7 @@ def index11():
     remove_image()
 
     # plot image
-    #plot_image()
+    plot_image()
 
     # set response
     res = make_response(jsonify({"message": "Video Received"}), 200)

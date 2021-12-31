@@ -1,12 +1,12 @@
 import re
 import glob
+import shutil
 import matplotlib.pyplot as plt
 from mpl_toolkits.axes_grid1 import ImageGrid
 from keras.preprocessing.image import load_img
 
 
 def plot_image():
-
     dir_name = 'frame/'
 
     # Get list of all files in a given directory
@@ -37,4 +37,7 @@ def plot_image():
         ax.set_xticks([])
         ax.set_yticks([])
 
-    fig.savefig('test.png')
+    fig.savefig("test.png", bbox_inches='tight', pad_inches = 0)
+
+    # delete folder frame
+    shutil.rmtree('frame')
