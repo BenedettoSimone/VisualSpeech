@@ -1,7 +1,8 @@
 import os
-from Lip_Extractor import lip_extractor
+from src.main.webapp.Lip_Extractor import lip_extractor
 from Plot_image import plot_image
 from RemoveImage import remove_image
+from Predict import predict
 from flask import Flask, jsonify, request, make_response
 
 app = Flask(__name__)
@@ -42,8 +43,10 @@ def index11():
     # plot image
     plot_image()
 
+    response = predict()
+
     # set response
-    res = make_response(jsonify({"message": "Video Received"}), 200)
+    res = make_response(jsonify({"message": response}), 200)
     res.headers['Access-Control-Allow-Origin'] = '*'
     res.headers['Access-Control-Allow-Methods'] = 'GET,PUT,POST,DELETE'
 
