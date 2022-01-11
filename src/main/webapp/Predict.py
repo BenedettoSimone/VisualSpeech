@@ -5,8 +5,8 @@ from tensorflow.keras.preprocessing import image
 
 
 def predict():
-    model = load_model('1_rmsprop.h5', compile=False)
-    model.compile(optimizer='rmsprop', loss='categorical_crossentropy', metrics=['accuracy'])
+    model = load_model('2_adam_Prova100epoch.h5', compile=False)
+    model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
     img = load_img('test.png', color_mode="grayscale", target_size=(224, 224), interpolation="nearest")
 
@@ -20,8 +20,8 @@ def predict():
     class_names = ["Stop navigation", "Excuse me", "I am sorry", "Thank you", "Good bye", "I love this grace",
                    "Nice to meet you", "You are welcome", "How are you", "Have a good time", "Begin", "Choose",
                    "Connection", "Navigation", "Next", "Previous", "Start", "Stop", "Hello", "Web"]
-    print(class_names[prediction_class[0] - 1])
+    print(class_names[prediction_class[0]])
     print(prediction_class[0])
 
-    return class_names[prediction_class[0] - 1]
+    return class_names[prediction_class[0]]
 
