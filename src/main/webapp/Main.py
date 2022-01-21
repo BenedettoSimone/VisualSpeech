@@ -81,8 +81,8 @@ if (__name__) == '__main__':
         # plot image
         plot_image()
         if (i < 5):
-            os.rename('test.png', 'DS_Word_' + str(array[i]) + '_13.png')
+            os.rename('test.png', 'Prova_Word_' + str(array[i]) + '_13.png')
         else:
-            os.rename('test.png', 'DS_Phrases_' + str(array[i]) + '_13.png')
+            os.rename('test.png', 'Prova_Phrases_' + str(array[i]) + '_13.png')
 
 # https://towardsdatascience.com/talking-to-python-from-javascript-flask-and-the-fetch-api-e0ef3573c451

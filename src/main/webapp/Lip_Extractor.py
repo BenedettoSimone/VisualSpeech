@@ -100,7 +100,6 @@ def compute_threshold(array):
     current = 0
     while array[current] < sum_v:
         os.remove('frame/frame-%d.jpg' % current)
-        print("os.remove(frame3/frame-%d.jpg)" % current)
         current = current + 1
 
     dir_name = 'frame/'

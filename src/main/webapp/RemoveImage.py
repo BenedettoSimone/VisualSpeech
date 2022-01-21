@@ -67,4 +67,5 @@ def replicate_last(num_frames):
 
     if num_repl > 0:
         for i in range(0, num_repl):
-            shutil.copyfile(last_path, "frame/frame-%d.jpg" % (last_path_number+i+1))
+            shutil.copyfile(last_path, "frame/frame-%d.jpg" % (int(last_path_number)+i+1))
+            print("REPLICATE: frame/frame-%d.jpg" % (int(last_path_number)+i+1))
