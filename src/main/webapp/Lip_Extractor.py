@@ -28,7 +28,7 @@ def mouth_aspect_ratio(mouth):
 
 # grab the indexes of the facial landmarks for the mouth
 (mStart, mEnd) = (49, 68)
-marArray = []
+
 
 
 def lip_extractor(video_path):
@@ -44,7 +44,7 @@ def lip_extractor(video_path):
     # create new directory for frame
     dirname = 'frame'
     os.mkdir(dirname)
-
+    marArray = []
     while success:
 
         gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -72,10 +72,13 @@ def lip_extractor(video_path):
         print('Read a new frame: ', success)
         count += 1
 
+    threshold=compute_threshold(marArray)
+    return threshold
 
-def compute_threshold():
-    min_value = min(marArray)
-    max_value = max(marArray)
+
+def compute_threshold(array):
+    min_value = min(array)
+    max_value = max(array)
 
     print("min_value" + str(min_value))
     print("max_value" + str(max_value))
@@ -85,11 +88,13 @@ def compute_threshold():
     print("mean_value" + str(mean_value))
 
     mean_array = []
-    for i in range(0, len(marArray)):
+    for i in range(0, len(array)):
         mean_array.append(mean_value)
 
-    x = mean_squared_error(marArray, mean_array, squared=False)
+    x = mean_squared_error(array, mean_array, squared=False)
     print(x)
 
     sum_v = mean_value - (x / 2)
     print(sum_v)
+
+    return sum_v

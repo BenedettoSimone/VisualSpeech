@@ -35,7 +35,8 @@ def index11():
     out_file.close()
 
     # extract lips from video frame
-    lip_extractor(FILE_OUTPUT)
+    threshold = lip_extractor(FILE_OUTPUT)
+
 
     # remove similar images
     remove_image()
@@ -55,6 +56,23 @@ def index11():
 
 
 if (__name__) == '__main__':
-    app.run(host='0.0.0.0', port=80, debug=True)
+    # app.run(host='0.0.0.0', port=80, debug=True)
+    # extract lips from video frame
+
+    array = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+    for i in range(0, 10):
+        print(str(i) + '.mp4')
+        lip_extractor(str(i) + '.mp4')
+
+        # remove similar images
+        remove_image()
+
+        # plot image
+        plot_image()
+        if (i < 5):
+            os.rename('test.png', 'DS_Word_' + str(array[i]) + '_13.png')
+        else:
+            os.rename('test.png', 'DS_Phrases_' + str(array[i]) + '_13.png')
 
 # https://towardsdatascience.com/talking-to-python-from-javascript-flask-and-the-fetch-api-e0ef3573c451
