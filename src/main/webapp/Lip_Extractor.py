@@ -7,6 +7,7 @@ import numpy as np
 import dlib
 import cv2
 import os
+import glob
 
 
 def mouth_aspect_ratio(mouth):
@@ -28,7 +29,6 @@ def mouth_aspect_ratio(mouth):
 
 # grab the indexes of the facial landmarks for the mouth
 (mStart, mEnd) = (49, 68)
-
 
 
 def lip_extractor(video_path):
@@ -72,8 +72,8 @@ def lip_extractor(video_path):
         print('Read a new frame: ', success)
         count += 1
 
-    threshold=compute_threshold(marArray)
-    return threshold
+    len_frames = compute_threshold(marArray)
+    return len_frames
 
 
 def compute_threshold(array):
@@ -97,4 +97,13 @@ def compute_threshold(array):
     sum_v = mean_value - (x / 2)
     print(sum_v)
 
-    return sum_v
+    current = 0
+    while array[current] < sum_v:
+        os.remove('frame/frame-%d.jpg' % current)
+        print("os.remove(frame3/frame-%d.jpg)" % current)
+        current = current + 1
+
+    dir_name = 'frame/'
+    # Get list of all files in a given directory
+    list_of_files = glob.glob(dir_name + '*')
+    return len(list_of_files)

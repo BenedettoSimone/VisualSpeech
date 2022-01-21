@@ -1,7 +1,7 @@
 import os
 from src.main.webapp.Lip_Extractor import lip_extractor
 from Plot_image import plot_image
-from RemoveImage import remove_image
+from RemoveImage import remove_image, replicate_last
 from Predict import predict
 from flask import Flask, jsonify, request, make_response
 
@@ -35,11 +35,14 @@ def index11():
     out_file.close()
 
     # extract lips from video frame
-    threshold = lip_extractor(FILE_OUTPUT)
+    num_frames = lip_extractor(FILE_OUTPUT)
 
+    if num_frames <= 49:
+        replicate_last(num_frames)
 
-    # remove similar images
-    remove_image()
+    else:
+        # remove similar images
+        remove_image()
 
     # plot image
     plot_image()
@@ -63,10 +66,17 @@ if (__name__) == '__main__':
 
     for i in range(0, 10):
         print(str(i) + '.mp4')
-        lip_extractor(str(i) + '.mp4')
+        num_frames = lip_extractor(str(i) + '.mp4')
+
+        if num_frames <= 49:
+            replicate_last(num_frames)
+
+        else:
+            # remove similar images
+            remove_image()
 
         # remove similar images
-        remove_image()
+        #remove_image()
 
         # plot image
         plot_image()

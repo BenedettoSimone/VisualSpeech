@@ -3,9 +3,8 @@ import cv2
 import glob
 import re
 import numpy as np
+import shutil
 from skimage.metrics import structural_similarity as ssim
-
-
 
 
 def delete(filename1):
@@ -52,3 +51,20 @@ def remove_image():
     for current, file in enumerate(data):
         delete(data[current][0])
         current += 1
+
+
+
+
+def replicate_last(num_frames):
+
+    dir_name = 'frame/'
+    list_of_files = glob.glob(dir_name + '*')
+    list_of_files.sort(key=lambda var: [int(x) if x.isdigit() else x for x in re.findall(r'[^0-9]|[0-9]+', var)])
+    last_path = list_of_files[-1]
+    last_path_number = last_path[-6:-4]
+
+    num_repl = 49 - num_frames
+
+    if num_repl > 0:
+        for i in range(0, num_repl):
+            shutil.copyfile(last_path, "frame/frame-%d.jpg" % (last_path_number+i+1))
