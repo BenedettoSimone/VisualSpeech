@@ -7,7 +7,7 @@
     font-family: "HelveticaNeueBold";
     src: url("font/HelveticaNeue-Bold.ttf");
 }
-
+/*
 html{
     background: url(img/background.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
@@ -17,7 +17,26 @@ html{
 
     font-family: HelveticaNeueBold;
 }
+*/
+html{
+    background: linear-gradient(#1b0c43,#2f1670);
+    height: 100%;
+    font-family: HelveticaNeueBold;
+}
 
+#tsparticles{
+    z-index: 0;
+}
+
+#tsparticles canvas{
+    background-color: transparent!important;
+    z-index: -1!important;
+    opacity: 0.3!important;
+}
+
+#video{
+    z-index: 0;
+}
 button {
     width: 150px;
     padding: 10px;

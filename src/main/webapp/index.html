@@ -9,10 +9,13 @@
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 
 <body>
-
+<div id="tsparticles">
+    <canvas class="tsparticles-canvas-el" width="2846" height="1538" style="width: 100%; height: 100%; position: fixed; z-index: -1; top: 0px; left: 0px; background-color:#1b0c43!important; pointer-events: none;"></canvas>
+</div>
 <h1 id="title">Visual Speech Recognition</h1>
 <div class="toggle-section">
     <img src="img/united-kingdom.png">
@@ -45,6 +48,10 @@
 </div>
 
 <script src="script.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/tsparticles-preset-links@1.22.5/tsparticles.preset.links.bundle.min.js"
+        integrity="sha256-pQsjEmQMchdzQUO6nacx+t2omISa7WUWtnpc3fnga5E=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    tsParticles.load("tsparticles", { preset: "links" });
+</script>
 </body>
 </html>
