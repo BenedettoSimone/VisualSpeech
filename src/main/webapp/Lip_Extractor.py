@@ -101,6 +101,7 @@ def compute_threshold(array):
     while array[current] < sum_v:
         os.remove('frame/frame-%d.jpg' % current)
         current = current + 1
+        print("REMOVE:'frame/frame-%d.jpg" % current)
 
     dir_name = 'frame/'
     # Get list of all files in a given directory

@@ -106,6 +106,8 @@ stop_button.addEventListener('click', function() {
 
 
 download_link.addEventListener('click', async function () {
+
+    var check = document.querySelector("#cmn-toggle").checked;
     let data = new FormData();
     data.append('file', video_local);
 
@@ -113,8 +115,14 @@ download_link.addEventListener('click', async function () {
     delete_button.style.display = 'none';
     div_result.style.display = 'flex';
 
+    if(check){
+        console.log("ITA:"+check);
+    }else{
+        console.log("ENGL:"+check);
+    }
 
-    const response = await fetch('http://192.168.1.31:80/main1', {
+
+    const response = await fetch('http://192.168.1.7:80/main1', {
         method: "POST",
         body: data
     });
