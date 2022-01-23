@@ -49,6 +49,10 @@ button {
     border-radius: 10px;
 }
 
+#download-video, #delete-video{
+    margin: 20px;
+}
+
 button:hover{
     background-color: rebeccapurple;
     color:white;
@@ -67,6 +71,12 @@ button:hover{
 
 #start-record, #stop-record, #download-video, #delete-video {
     display: none;
+}
+
+.send-video{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /*
