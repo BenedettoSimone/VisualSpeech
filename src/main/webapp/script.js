@@ -115,17 +115,23 @@ download_link.addEventListener('click', async function () {
     delete_button.style.display = 'none';
     div_result.style.display = 'flex';
 
+    var response;
     if(check){
         console.log("ITA:"+check);
+        response = await fetch('http://192.168.1.7:80/mainITA', {
+            method: "POST",
+            body: data
+        });
     }else{
         console.log("ENGL:"+check);
+        response = await fetch('http://192.168.1.7:80/mainENGL', {
+            method: "POST",
+            body: data
+        });
     }
 
 
-    const response = await fetch('http://192.168.1.7:80/main1', {
-        method: "POST",
-        body: data
-    });
+
 
     var responseJson = response.json()
     responseJson.then(function (data) {

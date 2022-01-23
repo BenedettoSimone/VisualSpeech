@@ -20,7 +20,7 @@ def index1():
     return res
 
 
-@app.route('/main1', methods=['GET', 'POST'])
+@app.route('/mainENGL', methods=['GET', 'POST'])
 def index11():
     req = request.get_data()
 
@@ -58,15 +58,56 @@ def index11():
     return res
 
 
+@app.route('/mainITA', methods=['GET', 'POST'])
+def index12():
+    req1 = request.get_data()
+
+    FILE_OUTPUT = 'video.mp4'
+
+    # Checks and deletes the output file
+    if os.path.isfile(FILE_OUTPUT):
+        os.remove(FILE_OUTPUT)
+
+    out_file = open(FILE_OUTPUT, "wb")  # open for [w]riting as [b]inary
+    out_file.write(req1)
+    out_file.close()
+
+    # extract lips from video frame
+    num_frames = lip_extractor(FILE_OUTPUT)
+
+    if num_frames <= 49:
+        replicate_last(num_frames)
+
+    else:
+        # remove similar images
+        remove_image()
+
+    # plot image
+    plot_image()
+
+    response = predict()
+
+    # set response
+    res = make_response(jsonify({"message": response}), 200)
+    res.headers['Access-Control-Allow-Origin'] = '*'
+    res.headers['Access-Control-Allow-Methods'] = 'GET,PUT,POST,DELETE'
+
+    print(res)
+    return res
+
+
+
 if (__name__) == '__main__':
-    # app.run(host='0.0.0.0', port=80, debug=True)
+    app.run(host='0.0.0.0', port=80, debug=True)
     # extract lips from video frame
 
+    '''
+    
     array = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
 
     for i in range(0, 10):
         print(str(i) + '.mp4')
-        num_frames = lip_extractor(str(i) + '.mp4')
+        num_frames = lip_extractor(str(i) + '.MOV')
 
         if num_frames <= 49:
             replicate_last(num_frames)
@@ -81,8 +122,9 @@ if (__name__) == '__main__':
         # plot image
         plot_image()
         if (i < 5):
-            os.rename('test.png', 'Prova_Word_' + str(array[i]) + '_13.png')
+            os.rename('test.png', 'BS_Word_' + str(array[i]) + '_07.png')
         else:
-            os.rename('test.png', 'Prova_Phrases_' + str(array[i]) + '_13.png')
+            os.rename('test.png', 'BS_Phrases_' + str(array[i]) + '_07.png')
 
+        '''
 # https://towardsdatascience.com/talking-to-python-from-javascript-flask-and-the-fetch-api-e0ef3573c451
