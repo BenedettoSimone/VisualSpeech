@@ -41,6 +41,7 @@ let delete_button = document.querySelector("#delete-video");
 let div_recording =document.querySelector("#recording")
 let div_result = document.querySelector("#result")
 let string_result = document.querySelector("#string-result")
+let loader = document.querySelector("#loader")
 
 
 let camera_stream = null;
@@ -136,6 +137,7 @@ download_link.addEventListener('click', async function () {
     var responseJson = response.json()
     responseJson.then(function (data) {
         console.log(data.message)
+        //loader.style.display = 'none';
         string_result.innerHTML = data.message;
     });
 

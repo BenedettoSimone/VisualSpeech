@@ -19,7 +19,7 @@ html{
 }
 */
 html{
-    background: linear-gradient(#1b0c43,#2f1670);
+    background: #2f1670;
     height: 100%;
     font-family: HelveticaNeueBold;
 }
@@ -195,15 +195,77 @@ button:hover{
 
 #result {
     margin: 40px auto 0 auto;
-    width: 500px;
-    background: white;
+    width: 379px;
+    background: #2f1670;
     height: 72px;
     border-radius: 20px;
     padding: 10px;
     display: none;
     align-items: center;
+    border: 1px solid white;
+    justify-content: center;
 }
 
+#result h5{
+    font-size: 21px;
+    color: #ffffff;
+}
+
+/**---loader----*/
+
+#loader{
+    width:70px;
+    height:10px;
+
+}
+
+.inner{
+    width:10px;
+    height:10px;
+    float:left;
+    background:#ffffff;
+    border-radius:50%;
+
+}
+
+.bullet-one{
+    margin-right:5px;
+    -webkit-animation: bullet-anim 1s linear infinite;
+    -moz-animation: bullet-anim 1s linear infinite;
+    animation: bullet-anim 1s linear infinite;
+}
+
+.bullet-two{
+    margin-right:5px;
+    -webkit-animation: bullet-anim 1s linear 0.1s infinite;
+    -moz-animation: bullet-anim 1s linear 0.1s infinite;
+    animation: bullet-anim 1s linear 0.1s infinite;
+}
+
+.bullet-three{
+    margin-right:5px;
+    -webkit-animation: bullet-anim 1s linear 0.2s infinite;
+    -moz-animation: bullet-anim 1s linear 0.2s infinite;
+    animation: bullet-anim 1s linear 0.2s infinite;
+}
+
+.bullet-four{
+    margin-right:5px;
+    -webkit-animation: bullet-anim 1s linear 0.3s infinite;
+    -moz-animation: bullet-anim 1s linear 0.3s infinite;
+    animation: bullet-anim 1s linear 0.3s infinite;
+}
+
+.bullet-five{
+    -webkit-animation: bullet-anim 1s linear 0.4s infinite;
+    -moz-animation: bullet-anim 1s linear 0.4s infinite;
+    animation: bullet-anim 1s linear 0.4s infinite;
+}
+
+@-webkit-keyframes bullet-anim{
+    0%{-webkit-transform:scale(1.2,1.2);}
+    100%{-webkit-transform:scale(0.8,0.8);}
+}
 
 /*---TOGGLE BUTTON----*/
 
