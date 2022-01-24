@@ -42,6 +42,7 @@ let div_recording =document.querySelector("#recording")
 let div_result = document.querySelector("#result")
 let string_result = document.querySelector("#string-result")
 let loader = document.querySelector("#loader")
+let restart_button = document.querySelector("#restart-record")
 
 
 let camera_stream = null;
@@ -137,12 +138,25 @@ download_link.addEventListener('click', async function () {
     var responseJson = response.json()
     responseJson.then(function (data) {
         console.log(data.message)
-        //loader.style.display = 'none';
+        loader.style.display = 'none';
+        restart_button.style.display = 'block';
         string_result.innerHTML = data.message;
     });
 
 });
 
+
+restart_button.addEventListener('click', function (){
+    blobs_recorded = [];
+    video_local = null;
+
+    restart_button.style.display = 'none';
+    div_result.style.display = 'none';
+    string_result.innerHTML = "";
+    start_button.style.display = 'block';
+    loader.style.display = 'block';
+
+})
 
 
 delete_button.addEventListener('click', function (){
