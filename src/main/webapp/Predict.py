@@ -5,7 +5,7 @@ from tensorflow.keras.preprocessing import image
 
 
 def predict():
-    model = load_model('2_adam_Prova100epoch.h5', compile=False)
+    model = load_model('model_4.h5', compile=False)
     model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
     img = load_img('test.png', color_mode="grayscale", target_size=(224, 224), interpolation="nearest")
